@@ -5,7 +5,7 @@ public class Employee {
     // Member variable / fields of class 
     int id;
     String name;
-    double salary;
+    private double salary;
 
     // No arg constructor
     public Employee(){

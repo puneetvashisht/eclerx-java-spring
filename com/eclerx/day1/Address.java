@@ -5,7 +5,7 @@ public class Address {
     int houseNumber;
     String street;
     String city;
-    int pinCode; 
+    private int pinCode; 
 
     
     // getters and setters
@@ -13,7 +13,9 @@ public class Address {
         return pinCode;
     }
     public void setPinCode(int pinCode) {
-        this.pinCode = pinCode;
+        if(pinCode > 0){
+            this.pinCode = pinCode;
+        } 
     }
 
     // constructor
