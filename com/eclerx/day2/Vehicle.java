@@ -1,6 +1,6 @@
 package com.eclerx.day2;
 
-public class Vehicle extends Object {
+public abstract class Vehicle extends Object implements Accessories, Battery {
     int maxSpeed;
     String color;
     public Vehicle(int maxSpeed) {
@@ -18,4 +18,6 @@ public class Vehicle extends Object {
     public void speedUp(){
         maxSpeed++;
     }
+
+    public abstract void shiftGear();
 }

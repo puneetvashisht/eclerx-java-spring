@@ -20,6 +20,31 @@ public class Car extends Vehicle{
                 + "]";
     }
 
+    @Override
+    public void shiftGear() {
+       System.out.println("Shift gear using legs!");
+    }
+
+    @Override
+    public void addMobileHolder() {
+        System.out.println("Adding mobile holder");
+    }
+
+    @Override
+    public void addMirror() {
+        System.out.println("Adding mirror");
+    }
+
+    @Override
+    public void addSeatCovers() {
+        System.out.println("Adding seat covers");
+    }
+
+    @Override
+    public void add(int Amps) {
+        System.out.println("Adding battery with : " + Amps);
+    }
+
 
     
     
