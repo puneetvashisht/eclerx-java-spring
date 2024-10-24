@@ -1,11 +1,17 @@
 package com.eclerx.day3;
 import java.util.*;
 
-class Fruit{
+class Fruit implements Comparable<Fruit>{
     String name;
+    String color;
 
     public Fruit(String name) {
         this.name = name;
+    }
+
+    public Fruit(String name, String color) {
+        this(name);
+        this.color = color;
     }
 
 
@@ -30,7 +36,14 @@ class Fruit{
 
     @Override
     public String toString() {
-        return "Fruit [name=" + name + "]";
+        return "Fruit [name=" + name + ", color=" + color + "]";
+    }
+
+    @Override
+    public int compareTo(Fruit o) {
+        if(this.name.equals(o.name))
+            return this.color.compareTo(o.color);
+        return this.name.compareTo(o.name);
     }
     
 }
