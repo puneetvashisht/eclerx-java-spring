@@ -3,7 +3,24 @@ package com.eclerx.day4;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ *  Condition
+ */
+@FunctionalInterface
+ interface Condition<T> {
+    boolean test(T t);
+}
+
 public class ListOperations {
+
+    public static void printEmployees(List<Employee> employees, Condition<Employee> condition){
+        for(Employee e: employees){
+            // if(e.name.startsWith("R")){
+            if(condition.test(e)){
+                System.out.println(e);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Employee e1 = new Employee(1, "Priya", 54343.34);
@@ -19,9 +36,34 @@ public class ListOperations {
         System.out.println(employees);
 
         // Print all the employees starting letter "R" in name
+        System.out.println("---------- Printing with starting name 'R'");
+        printEmployees(employees, (e) -> e.name.startsWith("R"));
+        // printEmployees(employees , new Condition<Employee>(){
+        //     @Override
+        //     public boolean test(Employee e) {
+        //        return e.name.startsWith("R");
+        //     }          
+        // });
+        // for(Employee e: employees){
+        //     if(e.name.startsWith("R")){
+        //         System.out.println(e);
+        //     }
+        // }
 
         // Print all employees having salary > 30000
+        System.out.println("--------- Printing with salary > 30000");
+        printEmployees(employees, (e) -> e.getSalary() > 30000);
+        // for(Employee e: employees){
+        //     if(e.getSalary() > 30000){
+        //         System.out.println(e);
+        //     }
+        // }
 
         // Print all the employees
+        System.out.println("--------- Printing all employees");
+        printEmployees(employees, (e) -> true);
+        // for(Employee e: employees){
+        //     System.out.println(e);
+        // }
     }
 }
