@@ -19,7 +19,10 @@ public class EmployeeSort {
         Collections.sort(employees);
         System.out.println(employees);
 
-        Collections.sort(employees, (emp1, emp2)-> emp1.name.compareTo(emp2.name));
+        Collections.sort(employees, (emp1, emp2)-> {
+            System.out.println("em" + emp1);
+            return emp1.name.compareTo(emp2.name);
+        });
         System.out.println(employees);
 
         Collections.sort(employees, (emp1, emp2)-> emp1.getSalary().compareTo(emp2.getSalary()));
