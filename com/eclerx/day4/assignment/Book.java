@@ -109,6 +109,16 @@ public class Book implements Comparable<Book> {
         this.source = source;
     }
 
+    
+
+
+    @Override
+    public String toString() {
+        return "Book [isbn=" + isbn + ", title=" + title + ", rating=" + rating + ", price=" + price + ", source="
+                + source + "]";
+    }
+
+
 
     public static List<Book> getFromAmazon() {
 		Book b1 = new Book(9780596009201L, "Java 1", 4.0, 25.0, "Amazon");
