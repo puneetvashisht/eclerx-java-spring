@@ -27,16 +27,20 @@ public class BookStreamTest {
         // .filter((b) -> b.getRating() > 4.5)
         // .forEach((e)->System.out.println(e));
         // 3. Skip, limit and distinct
-
-        TreeSet<Book> filteredBooks = books.parallelStream()
+        
+        // TreeSet<Book> filteredBooks 
+        Map<Long, Book> bookFilteredMap = books.stream()
         .filter((b) -> b.getRating() > 4.5 && b.getPrice() > 30)
+        .collect(Collectors.toMap(b -> b.getIsbn(), b->b));
+
+        // System.out.println(bookFilteredMap);
         // .toList();
-        .collect(Collectors.toCollection(()-> new TreeSet<>()));
+        // .collect(Collectors.toCollection(()-> new TreeSet<>()));
 
         // System.out.println(filteredBooks);
-        for(Book b : filteredBooks){
-            System.out.println(b);
-        }
+        // for(Long key : bookFilteredMap.keySet()){
+        //     System.out.println(bookFilteredMap.get(key));
+        // }
         // .skip(2)
         // .limit(5)
         // .forEach((e)->System.out.println(e));
@@ -51,6 +55,28 @@ public class BookStreamTest {
         // // .anyMatch((b) -> b.getRating() > 4.5 && b.getPrice() > 100);
         // .noneMatch((b) -> b.getRating() > 4.5 );
         // System.out.println("Is thr any match" + result);
+
+        // Maximum price of the book
+
+        // Optional<Book> maxPriceBookFound = books.stream()
+        // .max((b1, b2) -> (int) (b1.getPrice() - b2.getPrice()));
+
+        // if(maxPriceBookFound.isPresent()){
+        //     System.out.println(maxPriceBookFound.get());
+        // }
+
+        // Optional<Double> maxPriceFound =  books.stream()
+        // .map(b -> b.getPrice())
+        // .max(Double::compare);
+
+        // if(maxPriceFound.isPresent()){
+        //     System.out.println(maxPriceFound.get());
+        // }
+
+        books.stream()
+        .sorted((b1, b2) ->  (int) (b1.getPrice() - b2.getPrice()))
+        .forEach((b)-> System.out.println(b));
+
         
     }
 }

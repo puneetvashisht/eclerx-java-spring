@@ -132,7 +132,7 @@ public class Book implements Comparable<Book> {
 		Book b9 = new Book(9780596009209L, "Java 9", 4.3, 50.0, "Amazon");
 		Book b10 = new Book(9780596009210L, "Java 10", 4.5, 60.0, "Amazon");
 		
-		return Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b7, b8, b9, b10);
+		return Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10);
 	}
 
     public static List<Book> getFromBarnesAndNoble() {
