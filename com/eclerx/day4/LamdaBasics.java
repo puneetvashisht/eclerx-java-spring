@@ -32,5 +32,9 @@ public class LamdaBasics {
        // No implementation classes created here
     //    Greeting frenchGreeting = () -> System.out.println("Bonjour!");
        greet(() -> System.out.println("Bonjour!"));
+
+
+       Thread t1 = new Thread(()->System.out.println("Running in thread.." + Thread.currentThread().getName()));
+       t1.start();
     }
 }
