@@ -33,9 +33,14 @@ public class BookStreamTest {
         .filter((b) -> b.getRating() > 4.5 && b.getPrice() > 30)
         .collect(Collectors.toMap(b -> b.getIsbn(), b->b));
 
-        // System.out.println(bookFilteredMap);
+        System.out.println(bookFilteredMap);
         // .toList();
-        // .collect(Collectors.toCollection(()-> new TreeSet<>()));
+        books.stream()
+        .collect(Collectors.toCollection(()-> new TreeSet<>()));
+
+        books.stream()
+        .collect(Collectors.toCollection(TreeSet::new));
+
 
         // System.out.println(filteredBooks);
         // for(Long key : bookFilteredMap.keySet()){

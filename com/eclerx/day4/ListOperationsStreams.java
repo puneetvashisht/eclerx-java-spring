@@ -38,7 +38,8 @@ public class ListOperationsStreams {
         System.out.println("---------- Printing with starting name 'R'");
         employees.stream()
         .filter((e)-> e.name.startsWith("R"))
-        .forEach((e)-> System.out.println(e));
+        // .forEach((e)-> System.out.println(e));
+        .forEach(System.out::println);
 
         System.out.println("--------- Printing with salary > 30000");
         employees.stream()
