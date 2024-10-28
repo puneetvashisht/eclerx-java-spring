@@ -2,6 +2,7 @@ package com.eclerx.day5.assignment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Assignment1 {
     public static void main(String[] args) {
@@ -11,6 +12,23 @@ public class Assignment1 {
         fruits.add("mango");
         fruits.add("mango");
         fruits.add("banana");
+
+
+        String searchName = "pineapple";
+          Optional<String> foundName = fruits.stream()
+                                           .filter(name -> name.equalsIgnoreCase(searchName))
+                                           .findFirst();
+
+        // Handle the Optional value
+        foundName.ifPresentOrElse(
+            name -> System.out.println("Found name: " + name), // if present
+            () -> System.out.println("Name not found: " + searchName) // if absent
+        );
+
+
+        String result = foundName.orElse("default");
+        System.out.println(result);
+
 
 
         // 1. sort this list by string length 
