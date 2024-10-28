@@ -65,9 +65,9 @@ public class BookStreamTest {
         //     System.out.println(maxPriceBookFound.get());
         // }
 
-        // Optional<Double> maxPriceFound =  books.stream()
-        // .map(b -> b.getPrice())
-        // .max(Double::compare);
+        Optional<Double> maxPriceFound =  books.stream()
+        .map(b -> b.getPrice())
+        .max(Double::compare);
 
         // if(maxPriceFound.isPresent()){
         //     System.out.println(maxPriceFound.get());
