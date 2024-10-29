@@ -43,5 +43,20 @@ public class PeriodDemo {
 
         // Duration
 
+
+
+
     }
+
+
+
+//    paymentTranfer(){
+//        // service.balanceEquiry()
+//
+//
+//        // service.credit(amount)
+//
+//
+//        // smsServie.send('message');
+//    }
 }

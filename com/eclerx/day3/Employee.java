@@ -5,7 +5,7 @@ public class Employee implements Comparable<Employee> {
     // Member variable / fields of class 
     int id;
     String name;
-    private Double salary;
+    Double salary;
 
 
     
@@ -46,8 +46,12 @@ public class Employee implements Comparable<Employee> {
 
     // methods 
     void incrementSalary(){
+        if(salary < 0){
+            throw new RuntimeException("Salary less than zero. System error!");
+        }
         salary = salary + 5000;
     }
+
 
     // @Override
     // public String toString() {
