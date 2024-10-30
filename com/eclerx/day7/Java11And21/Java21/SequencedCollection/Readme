@@ -1,0 +1,17 @@
+The SequencedCollection, introduced in Java 21, is a new interface that provides a consistent order of elements and allows operations from both the beginning and the end of the collection. It is implemented by lists, sets, and maps that maintain insertion or encounter order.
+
+What is a Sequenced Collection?
+The SequencedCollection interface provides:
+
+Order-preserving behavior: Elements are accessed in insertion order.
+Methods to access first and last elements.
+Ability to reverse the order of the collection.
+Common methods like:
+getFirst() and getLast()
+addFirst(E e) and addLast(E e)
+reversed()
+Implemented by:
+
+SequencedSet (e.g., LinkedHashSet)
+SequencedMap (e.g., LinkedHashMap)
+SequencedList (e.g., ArrayList)

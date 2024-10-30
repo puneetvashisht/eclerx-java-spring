@@ -1,0 +1,26 @@
+ Record Pattern Matching
+Record patterns allow decomposing records directly into their components in switch expressions or if statements, making it easier to extract and work with individual fields.
+
+
+Explanation Of Code
+
+Creating Records:
+We define two records:
+Point: Represents a 2D point with x and y coordinates.
+Rectangle: Represents a rectangle defined by two points (topLeft and bottomRight).
+
+Using Record Patterns in switch:
+In processPoint(), the switch statement decomposes the Point object into its x and y fields using record patterns.
+We use a when clause to check if the point lies on the diagonal (i.e., x == y).
+
+
+Using Record Patterns for Rectangle:
+In calculateArea(), the switch statement extracts the coordinates from the Rectangle object.
+It calculates the area using the decomposed points.
+
+
+Testing with Main Method:
+We create two points and a rectangle using those points.
+We call processPoint() to print point details and calculateArea() to compute the area of the rectangle.
+
+
