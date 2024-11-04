@@ -33,4 +33,8 @@ public class A {
         c.display();
         System.out.println("Hello from A!");
     }
+
+    public String sayHello(){
+        return "Hello from A!";
+    }
 }
