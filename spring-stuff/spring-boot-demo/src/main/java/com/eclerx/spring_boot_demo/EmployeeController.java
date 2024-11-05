@@ -1,5 +1,8 @@
 package com.eclerx.spring_boot_demo;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,20 +25,37 @@ public class EmployeeController {
         return employees;
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> fetchEmployeeById(@PathVariable("id") int id){
+        Employee employee = employees.stream().filter(e -> e.id == id).findFirst().orElse(null);
+        if(employee == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
     @PostMapping("/")
-    public void addEmployee(@RequestBody Employee employee){
+    public ResponseEntity<Void> addEmployee(@RequestBody Employee employee){
         employees.add(employee);
+        ResponseEntity<Void> responseEntity = new ResponseEntity<>(HttpStatus.CREATED);
+        return responseEntity;
     }
 
     @PutMapping("/{id}")
-    public void updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee){
+    public ResponseEntity<Void> updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee){
 //        = new ArrayList<>();
+        ResponseEntity<Void> responseEntity = null;
         for(int i=0; i< employees.size(); i++){
             Employee e = employees.get(i);
             if(e.id == id){
                 employees.set(i, employee);
+                responseEntity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
         }
+        if(responseEntity == null){
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return responseEntity;
     }
 
     @DeleteMapping("/{id}")
