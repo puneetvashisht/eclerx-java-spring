@@ -15,6 +15,7 @@ import com.eclerx.spring_boot_jpa_demo2.entities.Course;
 import com.eclerx.spring_boot_jpa_demo2.repos.CourseRepository;
 import com.eclerx.spring_boot_jpa_demo2.utils.CourseNotFoundException;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "/api/v1")
 public class CourseController {
 
