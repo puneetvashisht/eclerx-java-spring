@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,20 @@ public class CourseController {
 
     @GetMapping("/courses")
     public List<Course> fetchAllCourses() {
-        return courseRepository.findAll();
+        // return courseRepository.findAll();
+        return courseRepository.findAllByOrderByTitleDesc();
+        // return courseRepository.findAll(Sort.by("title").ascending());
+    }
+
+    @GetMapping("/courses/sort/{field}/{sortDir}")
+    public List<Course> fetchAllCoursesSortedBy(@PathVariable("field") String field, @PathVariable("sortDir") String sortDir) {
+        // return courseRepository.findAll();
+        // return courseRepository.findAllByOrderByTitleDesc();
+        if(sortDir.equalsIgnoreCase("ASC")){
+            return courseRepository.findAll(Sort.by(field).ascending());
+        }
+        return courseRepository.findAll(Sort.by(field).descending());
+        
     }
 
     @GetMapping("/courses/{id}")
@@ -43,7 +57,7 @@ public class CourseController {
     @GetMapping("/courses/price/{price}")
     public List<Course> fetchCourseByPriceGreaterThan(@PathVariable double price) {
         // return courseRepository.findById(id).orElse(null);
-        return courseRepository.findByPriceGreaterThan(price);
+        return courseRepository.findByPriceGreaterThanOrderByTitleAsc(price);
     }
 
     @GetMapping("/courses/title/{title}")
