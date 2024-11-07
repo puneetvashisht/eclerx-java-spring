@@ -1,5 +1,6 @@
 package com.eclerx.spring_boot_jpa_demo2.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+    @Column(unique = true)
     String title;
     String instructor;
     double price;
