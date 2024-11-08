@@ -30,6 +30,28 @@
 					"response": []
 				},
 				{
+					"name": "Fetch All Courses Sorted",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/api/v1/courses/sort/title",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"sort",
+								"title"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Fetch A Course By ID",
 					"request": {
 						"method": "GET",
@@ -45,6 +67,114 @@
 								"v1",
 								"courses",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/api/v1/courses/search?title=Angular",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Angular"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Course Price Greater Than",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/api/v1/courses/search?title=Angular",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Angular"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Course Price Between",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/api/v1/courses/search?title=Angular",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Angular"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Course Title Containing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/api/v1/courses/search?title=Angular",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Angular"
+								}
 							]
 						}
 					},
