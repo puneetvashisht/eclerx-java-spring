@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +34,17 @@ public class CourseController {
     CourseRepository courseRepository;
 
     @GetMapping("/courses")
-    public List<Course> fetchAllCourses() {
+    public Page<Course> fetchAllCourses(@RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue="5") int size, 
+                                        @RequestParam(defaultValue="id") String field,
+                                        @RequestParam(defaultValue="asc") String sortDir) {
         // return courseRepository.findAll();
-        return courseRepository.findAllByOrderByTitleDesc();
+        // return courseRepository.findAllByOrderByTitleDesc();
         // return courseRepository.findAll(Sort.by("title").ascending());
+        Sort sort = Sort.by(Sort.Direction.fromString(sortDir), field);
+        PageRequest pageable = PageRequest.of(page, size, sort);
+        return courseRepository.findAll(pageable);
+
     }
 
     @GetMapping("/courses/sort/{field}/{sortDir}")
@@ -60,6 +69,12 @@ public class CourseController {
     public List<Course> fetchCourseByPriceGreaterThan(@PathVariable double price) {
         // return courseRepository.findById(id).orElse(null);
         return courseRepository.findByPriceGreaterThanOrderByTitleAsc(price);
+    }
+
+    @GetMapping("/courses/pricebtw")
+    public List<Course> fetchCourseByPriceBetween(@RequestParam("minPrice") double minPrice, @RequestParam("maxPrice") double maxPrice) {
+        // return courseRepository.findById(id).orElse(null);
+        return courseRepository.findSalariesBetween(minPrice, maxPrice);
     }
 
     @GetMapping("/courses/title/{title}")
