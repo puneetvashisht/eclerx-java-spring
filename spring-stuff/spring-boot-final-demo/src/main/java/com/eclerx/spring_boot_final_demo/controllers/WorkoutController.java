@@ -7,10 +7,12 @@ import com.eclerx.spring_boot_final_demo.entities.Category;
 import com.eclerx.spring_boot_final_demo.entities.Workout;
 import com.eclerx.spring_boot_final_demo.repos.CategoryRepository;
 import com.eclerx.spring_boot_final_demo.repos.WorkoutRepository;
+import com.eclerx.spring_boot_final_demo.services.WorkoutService;
 import com.eclerx.spring_boot_final_demo.utils.CategoryNotFoundException;
 import com.eclerx.spring_boot_final_demo.utils.WorkoutNotFoundException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 // @CrossOrigin
 @RequestMapping("/api/v1")
 public class WorkoutController {
+
+    @Autowired
+    WorkoutService workoutService;
+
     @Autowired
     WorkoutRepository workoutRepository;
 
@@ -62,6 +68,15 @@ public class WorkoutController {
     public Workout fetchAllWorkouts(@PathVariable int id) {
         return workoutRepository.findById(id).orElseThrow(() -> new WorkoutNotFoundException("Workout not found with id: " + id));
     }
+
+    @GetMapping("/workoutsandcourses")
+    public  Map<String, List<String>> fetchAllWorkoutsAndCourses() {
+        // Fetch all workouts
+        return workoutService.fetchAllWorkoutsAndCourses();
+        // Fetch all courses
+        // Combine and return
+    }
+    
 
 
     // @ExceptionHandler(WorkoutNotFoundException.class)

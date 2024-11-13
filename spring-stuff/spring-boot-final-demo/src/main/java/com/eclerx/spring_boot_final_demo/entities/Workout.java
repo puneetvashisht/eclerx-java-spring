@@ -18,6 +18,17 @@ public class Workout {
     int cbpm;
     String description;
 
+    public Workout(){
+
+    }
+    
+
+    public Workout( String title, int cbpm, String description) {
+        this.title = title;
+        this.cbpm = cbpm;
+        this.description = description;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL)
     Category category;
 
